@@ -3,7 +3,7 @@
 This folder contains the implementation of the ViTamin pre-training using OpenCLIP.
 
 ## 🔥 Model Zoo
-Here we provide 14 best-performing models. See [MODEL_HUB.md](./ViTamin/MODEL_HUB.md) for the additional 48 benchmarked short-schedule models.
+Here we provide 14 best-performing models. See [MODEL_HUB.md](./ViTamin/MODEL_HUB.md) for the additional 48 benchmarked short-schedule models. All will be released in huggingface. Stay tuned!
 
 | image encoder | image size | num patches | text encoder depth/width | seen samples (B) | params Image+Text (M) | MACs Image+Text (G) | ImageNet Acc. | avg. 38 datasets | download |
 |---------------|------------|-------------|--------------------------|-------------------|----------------------------------|----------------------|---------------|------------------|-----------------------|
