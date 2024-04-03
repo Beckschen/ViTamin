@@ -1,7 +1,7 @@
-# [ViTamin: Design Scalable Vision Models in the Vision-language Era](https://arxiv.org/pdf/2404.02132.pdf)
+# [ViTamin: Designing Scalable Vision Models in the Vision-language Era](https://arxiv.org/pdf/2404.02132.pdf)
 Official PyTorch implementation of **ViTamin**, from the following paper:
 
-[ViTamin: Design Scalable Vision Models in the Vision-language Era](https://arxiv.org/pdf/2404.02132.pdf).\
+[ViTamin: Designing Scalable Vision Models in the Vision-language Era](https://arxiv.org/pdf/2404.02132.pdf).\
 ✨ &ensp;[Jieneng Chen](https://beckschen.github.io), [Qihang Yu](https://yucornetto.github.io/), [Xiaohui Shen](https://xiaohuishen.github.io/), [Alan Yuille](https://www.cs.jhu.edu/~ayuille/) and [Liang-Chieh Chen](http://liangchiehchen.com/)\
 🏠 &ensp;Johns Hopkins University, Bytedance
 
@@ -95,7 +95,7 @@ Note: Panoptic dataset (ADE, CityScapes, MV) are with the metric of PQ. Semantic
 
 ```
 @inproceedings{chen2024vitamin,
-  title={ViTamin: Design Scalable Vision Models in the Vision-language Era},
+  title={ViTamin: Designing Scalable Vision Models in the Vision-language Era},
   author={Chen, Jieneng and Yu, Qihang and Shen, Xiaohui and Yuille, ALan and Chen, Liang-Chieh},
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
   year={2024}

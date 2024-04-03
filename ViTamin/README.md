@@ -141,7 +141,7 @@ print("Label probs:", text_probs)
 
 ```
 @inproceedings{chen2024vitamin,
-  title={ViTamin: Design Scalable Vision Models in the Vision-language Era},
+  title={ViTamin: Designing Scalable Vision Models in the Vision-language Era},
   author={Chen, Jieneng and Yu, Qihang and Shen, Xiaohui and Yuille, ALan and Chen, Liang-Chieh},
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
   year={2024}
