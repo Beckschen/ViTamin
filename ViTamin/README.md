@@ -115,6 +115,7 @@ from PIL import Image
 from transformers import AutoModel, CLIPImageProcessor
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
+# should install dependencies e.g., timm
 model = AutoModel.from_pretrained(
     'jienengchen/ViTamin-XL-384px',
     trust_remote_code=True).to(device).eval()
