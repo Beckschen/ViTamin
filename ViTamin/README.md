@@ -104,29 +104,35 @@ python3 setup.py install
 >>> model, _, preprocess = open_clip.create_model_and_transforms('ViTamin-L2', pretrained='~/vitmain_l_datacomp1b_s13b_b90k.bin')
 ```
 
-### Huggingface
+### Hugging Face
 
-We support huggingface interface.
+We support Hugging Face interface.
 
 ```python
 import torch
 from PIL import Image
 from transformers import AutoModel, CLIPImageProcessor
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
 model = AutoModel.from_pretrained(
-    'ViTamin/ViTamin-L-224px',
-    torch_dtype=torch.bfloat16,
-    low_cpu_mem_usage=True,
-    trust_remote_code=True).cuda().eval()
+    'jienengchen/ViTamin-XL-384px',
+    trust_remote_code=True).to(device).eval()
 
-image = Image.open('./vitaminicon.png').convert('RGB')
-
-image_processor = CLIPImageProcessor.from_pretrained('ViTamin/ViTamin-L-224px')
+image = Image.open('./image.png').convert('RGB')
+image_processor = CLIPImageProcessor.from_pretrained('jienengchen/ViTamin-XL-384px')
 
 pixel_values = image_processor(images=image, return_tensors='pt').pixel_values
 pixel_values = pixel_values.to(torch.bfloat16).cuda()
 
-outputs = model(pixel_values)
+tokenizer = open_clip.get_tokenizer('hf-hub:laion/CLIP-ViT-L-14-DataComp.XL-s13B-b90K')
+text = tokenizer(["a photo of vitamin", "a dog", "a cat"]).to(device)
+
+with torch.no_grad(), torch.cuda.amp.autocast():
+    image_features, text_features, logit_scale = model(pixel_values, text)
+    text_probs = (100.0 * image_features @ text_features.to(torch.float).T).softmax(dim=-1)
+
+print("Label probs:", text_probs) 
+
 ```
 
 ## Citing ViTamin
