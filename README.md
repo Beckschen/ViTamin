@@ -19,7 +19,7 @@ It currently includes code and models for the following tasks:
 > **Large Multi-Modal Models**: See [ViTamin for Large Multi-Modal Models](https://github.com/Beckschen/ViTamin/vitamin_llava) (Will release few hours later).
 
 
-We also support ViTamin with HuggingFace model [jienengchen/ViTamin-XL-384px](https://huggingface.co/jienengchen/ViTamin-XL-384px).
+We also support ViTamin with Hugging Face model [jienengchen/ViTamin-XL-384px](https://huggingface.co/jienengchen/ViTamin-XL-384px).
 
 ```python
 import torch
@@ -49,7 +49,8 @@ print("Label probs:", text_probs)
 ```
 ## Main Results with CLIP Pre-training on DataComp-1B
 
-All models will be released in huggingface. Stay tuned!
+We will provide 61 trained VLMs (48 benchmarked + 13 best performing) in Hugging Face for community use. Stay tuned!
+
 | image encoder | image size | num patches | text encoder depth/width | seen samples (B)  | trainable params Image+Text (M) | MACs Image+Text (G)  | ImageNet Acc. | avg. 38 datasets | ImageNet dist. shift. | VTAB | retrieval |
 |---------------|------------|-------------|--------------------------|-------------------|---------------------------------|----------------------|---------------|------------------|-----------------------|------|-----------|
 | ViTamin-L     | 224        | 196         | 12/768                   | 12.8              | 333.3+123.7                     | 72.6+6.6             | 80.8          | 66.7             | 69.8                  | 65.3 | 60.3      |
