@@ -1,0 +1,41 @@
+save_frequency: 1
+name: "vitamin_xl_256_s12.8B_bs90k_ft384"
+train_data: '/datasets/datacomp_1b/data/{00000..140089}.tar' # please modify to your own path
+train_num_samples: 512_000_000
+dataset_type: webdataset
+precision: 'amp_bfloat16'
+warmup: 0
+global_batch_size: 90270
+batch_size: 0
+epochs: 1
+lr: 1.0e-5
+beta1: 0.9
+beta2: 0.95
+eps: 1.0e-6
+workers: 4
+model: "ViTamin-XL-384"
+seed: 0
+ddp_static_graph: true
+local_loss: true
+gather_with_grad: true
+force_image_size: 384
+grad_checkpointing: true
+
+logs: './logs'
+imagenet_val: './imagenet1k/val' # please modify to your own path
+
+report_to: "tensorboard"
+log_every_n_steps: 32
+zeroshot_steps: 200
+val_steps: 200
+save_every_n_steps: 200
+delete_prev_step_ckpt: false
+zeroshot_frequency: 1
+resume: latest
+
+pretrained: './logs/vitamin_xl_256_s12.8B_bs90k/checkpoints/epoch_10.pt' # please modify to your own path
+pretrained_optim_scaler: false
+lr_scheduler: const
+wd: 0.0
+
+accum_freq: 3
