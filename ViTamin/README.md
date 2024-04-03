@@ -110,6 +110,7 @@ We support Hugging Face interface.
 
 ```python
 import torch
+import open_clip
 from PIL import Image
 from transformers import AutoModel, CLIPImageProcessor
 device = "cuda" if torch.cuda.is_available() else "cpu"
