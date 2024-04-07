@@ -55,7 +55,7 @@ pip3 install 'open_clip_torch[training]'
 
 We trained models on the [DataComp-1B](https://github.com/mlfoundations/datacomp). Please follow the instruction of [DataComp-1B](https://github.com/mlfoundations/datacomp) to download and prepare the data. 
 
-We can set up the enviroment using vitamin/setup_eval.sh and run the evaluation with vitamin/eval.sh
+We can set up the environment using vitamin/setup_eval.sh and run the evaluation with vitamin/eval.sh
 
 ### Training
 Here is an example to use 8 GPUs to train ViTamin-B use 128 seen sample on 14M data size.
@@ -73,7 +73,7 @@ torchrun --nnodes=1 --nproc_per_node=8 --master_addr=127.0.0.1 --master_port=999
 
 To evaluate a pre-trained `ViTamin` on zero-shot classification and retrieval tasks, see the folder `datacomp` for details
 
-- Setup enviroment:
+- Setup environment:
 ```bash
 bash setup_eval.sh
 ```
