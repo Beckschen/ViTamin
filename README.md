@@ -1,9 +1,11 @@
 # [ViTamin: Designing Scalable Vision Models in the Vision-language Era](https://arxiv.org/pdf/2404.02132.pdf)
-Official PyTorch implementation of **ViTamin**, from the following paper:
+Official PyTorch implementation of [**ViTamin**](https://arxiv.org/pdf/2404.02132.pdf). 
 
-[ViTamin: Designing Scalable Vision Models in the Vision-language Era](https://arxiv.org/pdf/2404.02132.pdf).\
+🔥 Our ViTamin-XL, with only 436M parameters, achieves an impressive 82.9% zero-shot ImageNet accuracy on the publicly available DataComp-1B dataset.
+
+<!-- [ViTamin: Designing Scalable Vision Models in the Vision-language Era](https://arxiv.org/pdf/2404.02132.pdf).\
 ✨ &ensp;[Jieneng Chen](https://beckschen.github.io), [Qihang Yu](https://yucornetto.github.io/), [Xiaohui Shen](https://xiaohuishen.github.io/), [Alan Yuille](https://www.cs.jhu.edu/~ayuille/) and [Liang-Chieh Chen](http://liangchiehchen.com/)\
-🏠 &ensp;Johns Hopkins University, Bytedance
+🏠 &ensp;Johns Hopkins University, Bytedance -->
 
 <p>
 <img src="image.png" alt="teaser" width=90% height=90%>
