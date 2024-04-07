@@ -1,0 +1,19 @@
+pip install torch==1.13.0+cu117 torchvision==0.14.0+cu117 torchaudio==0.13.0 --extra-index-url https://download.pytorch.org/whl/cu117
+export CUDA_HOME=/usr/local/cuda-11.8
+
+cd ~/your/project/directory
+git clone https://github.com/open-mmlab/mmcv.git
+cd mmcv
+git checkout v1.7.0
+MMCV_WITH_OPS=1 pip install -e . -v
+cd ..
+git clone https://github.com/open-mmlab/mmdetection.git
+cd mmdetection
+git checkout v2.28.1
+pip install -e . -v
+
+---
+pip install mmcv-full==1.6.2 -f  https://download.openmmlab.com/mmcv/dist/cu117/torch1.13/index.html
+
+---
+换到ccvl20；用装好的torch==1.11.0可以Inference

@@ -1,0 +1,1 @@
+{"config": "configs/ov_coco/fvit_movit16_upsample_fpn_bs64_3e_ovcoco.py", "metric": {"base_ap50": 60.062, "novel_ap50": 37.59, "all_ap50": 54.185, "bbox_mAP": 0.283, "bbox_mAP_50": 0.542, "bbox_mAP_75": 0.273, "bbox_mAP_s": 0.202, "bbox_mAP_m": 0.308, "bbox_mAP_l": 0.36, "bbox_mAP_copypaste": "0.283 0.542 0.273 0.202 0.308 0.360"}}
