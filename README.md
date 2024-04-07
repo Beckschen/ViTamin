@@ -1,7 +1,7 @@
 # [ViTamin: Designing Scalable Vision Models in the Vision-language Era](https://arxiv.org/pdf/2404.02132.pdf)
 Official PyTorch implementation of [**ViTamin**](https://arxiv.org/pdf/2404.02132.pdf). 
 
-🔥 ViTamin-XL, with only 436M parameters, achieves an impressive 82.9% zero-shot ImageNet accuracy on the publicly available DataComp-1B dataset.
+🔥 ViTamin-XL, with only **436M** parameters and trained on the public DataComp-1B dataset, achieves an impressive **82.9%** zero-shot ImageNet accuracy.
 
 🔥 ViTamin sets a new SOTA across seven benchmarks for open-vocabulary panoptic segmentation and semantic segmentation.
 
