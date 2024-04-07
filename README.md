@@ -16,7 +16,7 @@ It currently includes code and models for the following tasks:
 
 > **Open-vocabulary Detection and Segmentation**: See [ViTamin for Open-vocab Detection](https://github.com/Beckschen/ViTamin/vitamin_fvit) and [ViTamin for Open-vocab Segmentation](https://github.com/Beckschen/ViTamin/vitamin_fcclip) (Will release few hours later).
 
-> **Large Multi-Modal Models**: See [ViTamin for Large Multi-Modal Models](https://github.com/Beckschen/ViTamin/vitamin_llava) (Will release few hours later).
+> **Large Multi-Modal Models**: See [ViTamin for Large Multi-Modal Models](https://github.com/Beckschen/ViTamin/vitamin_llava).
 
 
 We also support ViTamin with Hugging Face model [jienengchen/ViTamin-XL-384px](https://huggingface.co/jienengchen/ViTamin-XL-384px).
