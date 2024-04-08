@@ -1,0 +1,4 @@
+# ninja log v5
+20	8185	1694846227953724182	/mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/build/temp.linux-x86_64-cpython-39/mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/src/cpu/ms_deform_attn_cpu.o	58c7cd5355c1c2ae
+20	17144	1694846236915459959	/mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/build/temp.linux-x86_64-cpython-39/mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/src/cuda/ms_deform_attn_cuda.o	58de3a6be659fcb5
+20	23039	1694846242794081592	/mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/build/temp.linux-x86_64-cpython-39/mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/src/vision.o	e0c91a267e677834

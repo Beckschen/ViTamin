@@ -1,0 +1,35 @@
+ninja_required_version = 1.3
+cxx = c++
+nvcc = /usr/local/cuda/bin/nvcc
+
+cflags = -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O2 -Wall -g -ffile-prefix-map=/build/python3.9-RNBry6/python3.9-3.9.2=. -fstack-protector-strong -Wformat -Werror=format-security -g -fwrapv -O2 -fPIC -DWITH_CUDA -I/mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/src -I/usr/local/lib/python3.9/dist-packages/torch/include -I/usr/local/lib/python3.9/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.9/dist-packages/torch/include/TH -I/usr/local/lib/python3.9/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.9 -c
+post_cflags = -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=MultiScaleDeformableAttention -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++17
+cuda_cflags = -DWITH_CUDA -I/mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/src -I/usr/local/lib/python3.9/dist-packages/torch/include -I/usr/local/lib/python3.9/dist-packages/torch/include/torch/csrc/api/include -I/usr/local/lib/python3.9/dist-packages/torch/include/TH -I/usr/local/lib/python3.9/dist-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/include/python3.9 -c
+cuda_post_cflags = -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -DCUDA_HAS_FP16=1 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=MultiScaleDeformableAttention -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_80,code=compute_80 -gencode=arch=compute_80,code=sm_80 -std=c++17
+cuda_dlink_post_cflags = 
+ldflags = 
+
+rule compile
+  command = $cxx -MMD -MF $out.d $cflags -c $in -o $out $post_cflags
+  depfile = $out.d
+  deps = gcc
+
+rule cuda_compile
+  depfile = $out.d
+  deps = gcc
+  command = $nvcc  $cuda_cflags -c $in -o $out $cuda_post_cflags
+
+
+
+
+
+build /mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/build/temp.linux-x86_64-cpython-39/mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/src/cpu/ms_deform_attn_cpu.o: compile /mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/src/cpu/ms_deform_attn_cpu.cpp
+build /mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/build/temp.linux-x86_64-cpython-39/mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/src/cuda/ms_deform_attn_cuda.o: cuda_compile /mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/src/cuda/ms_deform_attn_cuda.cu
+build /mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/build/temp.linux-x86_64-cpython-39/mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/src/vision.o: compile /mnt/bn/jieneng-eu-nas3/code/FC-CLIP/fcclip/modeling/pixel_decoder/ops/src/vision.cpp
+
+
+
+
+
+
+
