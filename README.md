@@ -11,7 +11,7 @@
 🏠 &ensp;Johns Hopkins University, Bytedance -->
 
 <p>
-<img src="image.png" alt="teaser" width=90% height=90%>
+<img src="image0.png" alt="teaser" width=90% height=90%>
 </p>
 
 ## Get Started
