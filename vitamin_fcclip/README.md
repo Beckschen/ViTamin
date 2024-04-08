@@ -9,6 +9,7 @@ Please follows FC-CLIP's [installation instructions](INSTALL.md) and [Getting St
 
 The configuration for ViTamin is provided in "./configs/coco/panoptic-segmentation/fcclip/fcclip_vitamin_l_eval_ade20k.yaml"
 
+
 ## 🔥 Model Zoo
 <table>
 <thead>
@@ -81,9 +82,9 @@ The configuration for ViTamin is provided in "./configs/coco/panoptic-segmentati
 
 ```
 @inproceedings{chen2024vitamin,
-  title={ViTamin: Design Scalable Vision Models in the Vision-language Era},
-  author={Chen, Jieneng and Yu, Qihang and Shen, Xiaohui and Yuille, ALan and Chen, Liang-Chieh},
-  journal={arXiv preprint arXiv:xxx.xxxxx},
+  title={ViTamin: Designing Scalable Vision Models in the Vision-language Era},
+  author={Chen, Jieneng and Yu, Qihang and Shen, Xiaohui and Yuille, Alan and Chen, Liang-Chieh},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
   year={2024}
 }
 ```

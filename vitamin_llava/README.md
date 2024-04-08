@@ -21,9 +21,9 @@ pip3 install open_clip_torch timm==0.9.16
 
 ```
 @inproceedings{chen2024vitamin,
-  title={ViTamin: Design Scalable Vision Models in the Vision-language Era},
-  author={Chen, Jieneng and Yu, Qihang and Shen, Xiaohui and Yuille, ALan and Chen, Liang-Chieh},
-  journal={arXiv preprint arXiv:xxx.xxxxx},
+  title={ViTamin: Designing Scalable Vision Models in the Vision-language Era},
+  author={Chen, Jieneng and Yu, Qihang and Shen, Xiaohui and Yuille, Alan and Chen, Liang-Chieh},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
   year={2024}
 }
 ```
