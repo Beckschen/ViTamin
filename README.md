@@ -4,6 +4,8 @@
 
 🔥 ViTamin sets a new SOTA across seven benchmarks for open-vocabulary segmentation, and also push forward the capabilities of large multi-modal models significantly.
 
+🔥 The HuggingFace 🤗 collection of ViTamin model cards has been released! Check out the [link](https://huggingface.co/collections/jienengchen/vitamin-661048126b72debdaca060bf)!
+
 <!-- [ViTamin: Designing Scalable Vision Models in the Vision-language Era](https://arxiv.org/pdf/2404.02132.pdf).\
 ✨ &ensp;[Jieneng Chen](https://beckschen.github.io), [Qihang Yu](https://yucornetto.github.io/), [Xiaohui Shen](https://xiaohuishen.github.io/), [Alan Yuille](https://www.cs.jhu.edu/~ayuille/) and [Liang-Chieh Chen](http://liangchiehchen.com/)\
 🏠 &ensp;Johns Hopkins University, Bytedance -->
@@ -90,7 +92,7 @@ Note: Panoptic dataset (ADE, CityScapes, MV) are with the metric of PQ. Semantic
 
 | image encoder      | image size | VQAv2 | GQA  | VizWiz | SQA  | T-VQA | POPE | MME  | MM-Bench | MM-B-CN | SEED | LLaVA-Wild | MM-Vet |
 |---------------|----------|-------|------|--------|------|-------|------|------|----------|---------|------|------------|--------|
-| ViTamin-L   | 224 | 78.4  | 61.6 | 51.1   | 66.9 | 58.7  | 84.6 | 1421 | 65.4     | 58.4    | 57.7 | 64.5       | 33.6   |
+| ViTamin-L   | 336 | 78.4  | 61.6 | 51.1   | 66.9 | 58.7  | 84.6 | 1421 | 65.4     | 58.4    | 57.7 | 64.5       | 33.6   |
 | ViTamin-L   | 384 | 78.9  | 61.6 | 55.4   | 67.6 | 59.8  | 85.5 | 1447 | 64.5     | 58.3    | 57.9 | 66.1       | 33.6   |
 
 

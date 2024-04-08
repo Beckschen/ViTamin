@@ -9,7 +9,7 @@ We train and evaluate the proposed ViTamin vision encoder within the LLaVA frame
 
 | image encoder      | image size | VQAv2 | GQA  | VizWiz | SQA  | T-VQA | POPE | MME  | MM-Bench | MM-B-CN | SEED | LLaVA-Wild | MM-Vet | Download |
 |---------------|----------|-------|------|--------|------|-------|------|------|----------|---------|------|------------|--------|----------|
-| ViTamin-L   | 224 | 78.4  | 61.6 | 51.1   | 66.9 | 58.7  | 84.6 | 1421 | 65.4     | 58.4    | 57.7 | 64.5       | 33.6   | [checkpoint](https://drive.google.com/)  |
+| ViTamin-L   | 336 | 78.4  | 61.6 | 51.1   | 66.9 | 58.7  | 84.6 | 1421 | 65.4     | 58.4    | 57.7 | 64.5       | 33.6   | [checkpoint](https://drive.google.com/)  |
 | ViTamin-L   | 384 | 78.9  | 61.6 | 55.4   | 67.6 | 59.8  | 85.5 | 1447 | 64.5     | 58.3    | 57.9 | 66.1       | 33.6   | [checkpoint](https://drive.google.com/)  |
 
 Besides original installation in LLaVA, please install/upgrade a few additional packages to make it compatible with ViTamin-LLaVA:
