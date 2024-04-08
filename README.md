@@ -4,7 +4,7 @@
 
 🔥 ViTamin sets a new SOTA across seven benchmarks for open-vocabulary segmentation, and also push forward the capabilities of large multi-modal models significantly.
 
-🔥 The HuggingFace 🤗 collection of ViTamin model cards has been released! Check out the [link](https://huggingface.co/collections/jienengchen/vitamin-661048126b72debdaca060bf)!
+🤗 The HuggingFace collection of ViTamin model cards has been released! Check out the [link](https://huggingface.co/collections/jienengchen/vitamin-family-661048126b72debdaca060bf)!
 
 <!-- [ViTamin: Designing Scalable Vision Models in the Vision-language Era](https://arxiv.org/pdf/2404.02132.pdf).\
 ✨ &ensp;[Jieneng Chen](https://beckschen.github.io), [Qihang Yu](https://yucornetto.github.io/), [Xiaohui Shen](https://xiaohuishen.github.io/), [Alan Yuille](https://www.cs.jhu.edu/~ayuille/) and [Liang-Chieh Chen](http://liangchiehchen.com/)\
