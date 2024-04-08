@@ -19,7 +19,7 @@ It currently includes code and models for the following tasks:
 
 > **ViTamin Pre-training**: See [./ViTamin/README.md](https://github.com/Beckschen/ViTamin/blob/main/ViTamin/README.md) for a quick start, which includes CLIP pre-training / fine-tuning pipelines and zero-shot evaluation pipelines.
 
-> **Open-vocabulary Detection and Segmentation**: See [ViTamin for Open-vocab Detection](https://github.com/Beckschen/ViTamin/tree/main/vitamin_fvit) and [ViTamin for Open-vocab Segmentation](https://github.com/Beckschen/ViTamin/tree/main/vitamin_fcclip) (Will update later).
+> **Open-vocabulary Detection and Segmentation**: See [ViTamin for Open-vocab Detection](https://github.com/Beckschen/ViTamin/tree/main/vitamin_fvit) and [ViTamin for Open-vocab Segmentation](https://github.com/Beckschen/ViTamin/tree/main/vitamin_fcclip).
 
 > **Large Multi-Modal Models**: See [ViTamin for Large Multi-Modal Models](https://github.com/Beckschen/ViTamin/tree/main/vitamin_llava).
 
