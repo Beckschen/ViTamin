@@ -2,7 +2,7 @@
 
 🔥 ViTamin-XL, with only **436M** parameters and trained on the public DataComp-1B dataset, achieves an impressive **82.9%** zero-shot ImageNet accuracy.
 
-🔥 ViTamin sets a new SOTA across seven benchmarks for open-vocabulary segmentation, and also push forward the capabilities of large multi-modal models significantly.
+🔥 ViTamin-L sets a new SOTA across seven benchmarks for open-vocabulary segmentation, and also push forward the capabilities of large multi-modal models significantly.
 
 🤗 The HuggingFace collection of ViTamin model cards has been released! Check out the [link](https://huggingface.co/collections/jienengchen/vitamin-family-661048126b72debdaca060bf)!
 
