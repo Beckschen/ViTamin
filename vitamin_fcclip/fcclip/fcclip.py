@@ -71,6 +71,7 @@ class FCCLIP(nn.Module):
         # FC-CLIP
         geometric_ensemble_alpha: float,
         geometric_ensemble_beta: float,
+        ensemble_on_valid_mask: bool,
     ):
         """
         Args:
@@ -126,18 +127,21 @@ class FCCLIP(nn.Module):
         self.mask_pooling = MaskPooling()
         self.geometric_ensemble_alpha = geometric_ensemble_alpha
         self.geometric_ensemble_beta = geometric_ensemble_beta
+        self.ensemble_on_valid_mask = ensemble_on_valid_mask
 
         self.train_text_classifier = None
         self.test_text_classifier = None
-
-        self.void_embedding = nn.Embedding(1, 768) # use this for void
-        self.global_pos_embed = nn.ParameterDict()
-        # stem is not used
-        #self.global_pos_embed["stem"] = nn.Parameter(torch.randn(1, 160, 1344//2, 1344//2))
-        self.global_pos_embed["res2"] = nn.Parameter(torch.randn(1, 160, 1344//4, 1344//4))
-        self.global_pos_embed["res3"] = nn.Parameter(torch.randn(1, 320, 1344//8, 1344//8))
-        self.global_pos_embed["res4"] = nn.Parameter(torch.randn(1, 1024, 1344//16, 1344//16))
-        self.global_pos_embed["res5"] = nn.Parameter(torch.randn(1, 1024, 1344//32, 1344//32))
+        if 'vitamin' in self.backbone.model_name:
+            self.void_embedding = nn.Embedding(1, 768) # use this for void
+            self.global_pos_embed = nn.ParameterDict()
+            # stem is not used
+            #self.global_pos_embed["stem"] = nn.Parameter(torch.randn(1, 160, 1344//2, 1344//2))
+            self.global_pos_embed["res2"] = nn.Parameter(torch.randn(1, 160, 1344//4, 1344//4))
+            self.global_pos_embed["res3"] = nn.Parameter(torch.randn(1, 320, 1344//8, 1344//8))
+            self.global_pos_embed["res4"] = nn.Parameter(torch.randn(1, 1024, 1344//16, 1344//16))
+            self.global_pos_embed["res5"] = nn.Parameter(torch.randn(1, 1024, 1344//32, 1344//32))
+        else:
+            self.void_embedding = nn.Embedding(1, backbone.dim_latent)
 
         _, self.train_num_templates, self.train_class_names = self.prepare_class_names_from_metadata(train_metadata, train_metadata)
         self.category_overlapping_mask, self.test_num_templates, self.test_class_names = self.prepare_class_names_from_metadata(test_metadata, train_metadata)
@@ -289,6 +293,7 @@ class FCCLIP(nn.Module):
             "test_topk_per_image": cfg.TEST.DETECTIONS_PER_IMAGE,
             "geometric_ensemble_alpha": cfg.MODEL.FC_CLIP.GEOMETRIC_ENSEMBLE_ALPHA,
             "geometric_ensemble_beta": cfg.MODEL.FC_CLIP.GEOMETRIC_ENSEMBLE_BETA,
+            "ensemble_on_valid_mask": cfg.MODEL.FC_CLIP.ENSEMBLE_ON_VALID_MASK
         }
 
     @property
@@ -322,24 +327,24 @@ class FCCLIP(nn.Module):
                         Each dict contains keys "id", "category_id", "isthing".
         """
         images = [x["image"].to(self.device) for x in batched_inputs]
-        # pad image to input_shape, e.g., 1344, which is 336 * 4
-        for idx in range(len(images)):
-            cur_height, cur_width = images[idx].shape[-2:]
-            padding = (0, max(0, 1344 - cur_width), 0, max(0, 1344 - cur_height), 0, 0)
-            images[idx] = F.pad(images[idx], padding, value=0)
+        if 'vitamin' in self.backbone.model_name:
+            # pad image to input_shape, e.g., 1344, which is 336 * 4
+            for idx in range(len(images)):
+                cur_height, cur_width = images[idx].shape[-2:]
+                padding = (0, max(0, 1344 - cur_width), 0, max(0, 1344 - cur_height), 0, 0)
+                images[idx] = F.pad(images[idx], padding, value=0)
 
         images = [(x - self.pixel_mean) / self.pixel_std for x in images]
         images = ImageList.from_tensors(images, self.size_divisibility)
 
         features = self.backbone(images.tensor)
 
-        # compensate the pos embed for the features
-        # for k__ in ["stem", "res2", "res3", "res4", "res5"]:
-        for k__ in ["res2", "res3", "res4", "res5"]:
-            try:
+        if 'vitamin' in self.backbone.model_name:
+             # compensate the pos embed for the features
+            # for k__ in ["stem", "res2", "res3", "res4", "res5"]:
+            for k__ in ["res2", "res3", "res4", "res5"]:
                 features[k__] = features[k__] + self.global_pos_embed[k__]
-            except:
-                assert 1==2, (k__, features[k__].shape, self.global_pos_embed[k__].shape, images[0].shape) # [1, 160, 336, 512]; [1, 160, 336, 336]; [3, 1344, 2048]
+
         text_classifier, num_templates = self.get_text_classifier()
         # Append void class weight
         text_classifier = torch.cat([text_classifier, F.normalize(self.void_embedding.weight, dim=-1)], dim=0)
@@ -383,8 +388,20 @@ class FCCLIP(nn.Module):
             out_vocab_cls_probs = out_vocab_cls_results.softmax(-1)
             in_vocab_cls_results = in_vocab_cls_results.softmax(-1)
             category_overlapping_mask = self.category_overlapping_mask.to(self.device)
-            alpha = self.geometric_ensemble_alpha
-            beta = self.geometric_ensemble_beta
+
+            if self.ensemble_on_valid_mask:
+                # Only include out_vocab cls results on masks with valid pixels
+                # We empirically find that this is important to obtain reasonable AP/mIOU score with ResNet CLIP models
+                valid_masking = (mask_for_pooling > 0).to(mask_for_pooling).sum(-1).sum(-1) > 0
+                valid_masking = valid_masking.to(in_vocab_cls_results.dtype).unsqueeze(-1)
+                alpha = torch.ones_like(in_vocab_cls_results) * self.geometric_ensemble_alpha
+                beta = torch.ones_like(in_vocab_cls_results) * self.geometric_ensemble_beta
+                alpha = alpha * valid_masking
+                beta = beta * valid_masking
+            else:
+                alpha = self.geometric_ensemble_alpha
+                beta = self.geometric_ensemble_beta
+
             cls_logits_seen = (
                 (in_vocab_cls_results ** (1 - alpha) * out_vocab_cls_probs**alpha).log()
                 * category_overlapping_mask
@@ -420,19 +437,21 @@ class FCCLIP(nn.Module):
                 width = input_per_image.get("width", image_size[1])
                 processed_results.append({})
 
-                # remove the padding
-                scale_factor = max(images.tensor.shape[-2:]) / max(height, width)
-                ori_height, ori_width = round(height * scale_factor), round(width * scale_factor)
-                mask_pred_result = mask_pred_result[:, :ori_height, :ori_width].expand(1, -1, -1, -1)
-                mask_pred_result = F.interpolate(
-                    mask_pred_result, size=(height, width), mode="bilinear", align_corners=False
-                )[0]
+                if 'vitamin' in self.backbone.model_name:
+                    # remove the padding
+                    scale_factor = max(images.tensor.shape[-2:]) / max(height, width)
+                    ori_height, ori_width = round(height * scale_factor), round(width * scale_factor)
+                    mask_pred_result = mask_pred_result[:, :ori_height, :ori_width].expand(1, -1, -1, -1)
+                    mask_pred_result = F.interpolate(
+                        mask_pred_result, size=(height, width), mode="bilinear", align_corners=False
+                    )[0]
 
 
                 if self.sem_seg_postprocess_before_inference:
-                    # mask_pred_result = retry_if_cuda_oom(sem_seg_postprocess)(
-                    #     mask_pred_result, image_size, height, width
-                    # )
+                    if 'vitamin' not in self.backbone.model_name:
+                        mask_pred_result = retry_if_cuda_oom(sem_seg_postprocess)(
+                            mask_pred_result, image_size, height, width
+                        )
                     mask_cls_result = mask_cls_result.to(mask_pred_result)
 
                 # semantic segmentation inference

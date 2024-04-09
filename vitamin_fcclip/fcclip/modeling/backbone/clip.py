@@ -209,7 +209,7 @@ class CLIP(Backbone):
         out["res5"] = out["res4"][..., ::2, ::2]
         return out
 
-    def visual_prediction_forward_convnext(self, x,):
+    def visual_prediction_forward_convnext(self, x, masks=None):
         batch, num_query, channel = x.shape
         x = x.reshape(batch*num_query, channel, 1, 1) # fake 2D input
         x = self.clip_model.visual.trunk.head(x)
@@ -262,3 +262,4 @@ class CLIP(Backbone):
     @property
     def size_divisibility(self):
         return -1
+
