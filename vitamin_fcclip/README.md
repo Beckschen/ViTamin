@@ -51,7 +51,7 @@ The configuration for ViTamin is provided in "./configs/coco/panoptic-segmentati
     <td align="center"><a href="https://drive.google.com/file/d/1-91PIns86vyNaL3CzMmDD39zKGnPMtvj/view?usp=sharing"> checkpoint </a></td>
   </tr>
   <tr>
-    <td align="center"><a href="configs/coco/panoptic-segmentation/fcclip_convnext_large_eval_ade20k.yaml"> ViT-L/14</a></td>
+    <td align="center">ViT-L/14</td>
     <td align="center">24.6</td>
     <td align="center">40.7</td>
     <td align="center">16.5</td>
@@ -60,10 +60,10 @@ The configuration for ViTamin is provided in "./configs/coco/panoptic-segmentati
     <td align="center">18.3</td>
     <td align="center">55.1</td>
     <td align="center">81.5</td>
-    <td align="center"><a href="https://drive.google.com"> checkpoint </a></td>
+    <td align="center"></td>
   </tr>
   <tr>
-    <td align="center"><a href="configs/coco/panoptic-segmentation/fcclip_vitamin_l_eval_ade20k.yaml"> ViTamin-L-</a></td>
+    <td align="center"><a href="configs/coco/panoptic-segmentation/fcclip_vitamin_l_eval_ade20k.yaml"> ViTamin-L</a></td>
     <td align="center">27.3</td>
     <td align="center">44.0</td>
     <td align="center">18.2</td>
@@ -72,7 +72,7 @@ The configuration for ViTamin is provided in "./configs/coco/panoptic-segmentati
     <td align="center">20.4</td>
     <td align="center">58.4</td>
     <td align="center">83.4</td>
-    <td align="center"><a href="https://drive.google.com"> checkpoint </a></td>
+    <td align="center"><a href="https://livejohnshopkins-my.sharepoint.com/:u:/g/personal/jchen293_jh_edu/EQAdujh2Nn1NndreoUFj6iYBRsqjvwAYojUahR23wWIwhw?e=2tWQfZ"> checkpoint </a></td>
   </tr>
 
 </tbody>

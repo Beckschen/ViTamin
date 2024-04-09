@@ -13,10 +13,10 @@ Run with the configuration "./F-ViT/configs/ov_coco/fvit_vitamin_l_336_upsample_
 
 ## 🔥 Model Zoo for ViTamin-FViT
 
-| image encoder | detector       | OV-COCO (AP<sub>50</sub><sup>novel</sup>) | OV-LVIS (AP<sub>r</sub>) | Download |
-|---------------|----------------|-------------------------------------------|--------------------------|----------|
-| ViT-L/14      | Sliding F-ViT  | 36.1                                      | 32.5                     | [checkpoint](https://drive.google.com/)  |
-| ViTamin-L     | Sliding F-ViT  | 37.5                                      | 35.6                     | [checkpoint](https://drive.google.com/)  |
+| image encoder | detector       | OV-COCO (AP<sub>50</sub><sup>novel</sup>) | OV-LVIS (AP<sub>r</sub>) | 
+|---------------|----------------|-------------------------------------------|--------------------------|
+| ViT-L/14      | Sliding F-ViT  | 36.1 [(checkpoint)](https://livejohnshopkins-my.sharepoint.com/:u:/g/personal/jchen293_jh_edu/EXOoKUzvAXFKirSlmQyJ-_sBzav6aqvqda1El-IuttTkmg?e=CrWpa2)                                     | 32.5 [(checkpoint)](https://livejohnshopkins-my.sharepoint.com/:u:/g/personal/jchen293_jh_edu/EZfvWnJsj3BAhiHwoh1CqgsBE2f4fF7KgSXrX85c9e3XCQ?e=js0Hvk)                    |
+| ViTamin-L     | Sliding F-ViT  | 37.5 [(checkpoint)](https://livejohnshopkins-my.sharepoint.com/:u:/g/personal/jchen293_jh_edu/EQ2g4-U3eFtKondf90qPxJABD4SDfj8pg2I7ZVAF9lSfzQ?e=jXJf3w)                                     | 35.6  [(checkpoint)](https://livejohnshopkins-my.sharepoint.com/:u:/g/personal/jchen293_jh_edu/EeHjh6m1vJhGs6ZuJPXNuMQB-CfoOJFk_96x2Dlt6qloeg?e=lJvJWp)                   |  
 
 ## Citing ViTamin
 
