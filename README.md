@@ -28,6 +28,7 @@ We also support ViTamin with Hugging Face model [jienengchen/ViTamin-XL-384px](h
 
 ```python
 import torch
+import open_clip
 from PIL import Image
 from transformers import AutoModel, CLIPImageProcessor
 device = "cuda" if torch.cuda.is_available() else "cpu"
