@@ -2,7 +2,7 @@
 
 🔥 Officially supported by [timm](https://github.com/huggingface/pytorch-image-models/blob/main/timm/models/vitamin.py) and [OpenCLIP](https://github.com/mlfoundations/open_clip/tree/main). Thanks @rwightman!
 
-One line of code:
+One line of code to call ViTamin:
 ```python
 model = timm.create_model('vitamin_xlarge_384')
 ```
