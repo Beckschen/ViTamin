@@ -2,6 +2,11 @@
 
 🔥 Officially supported by [timm](https://github.com/huggingface/pytorch-image-models/blob/main/timm/models/vitamin.py) and [OpenCLIP](https://github.com/mlfoundations/open_clip/tree/main). Thanks @rwightman!
 
+One line of code:
+```python
+model = timm.create_model('vitamin_xlarge_384')
+```
+
 ViTamin-XL, with only **436M** parameters and trained on the public DataComp-1B dataset, achieves an impressive **82.9%** zero-shot ImageNet accuracy.
 
 ViTamin-L sets a new SOTA across seven benchmarks for open-vocabulary segmentation, and also push forward the capabilities of large multi-modal models (e.g., LLaVA) significantly.
